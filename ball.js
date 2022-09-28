@@ -25,8 +25,7 @@ function DrawBall(ball){
     ctx.stroke();
 }
 
-function MoveBall(ball){
-    ball.speed += ball.velocity
+function MoveBall(ball, up){
     if(ball.x >= canvas.width){
         ball.dirX *= -1;
     }
@@ -37,10 +36,10 @@ function MoveBall(ball){
     
     if(ball.y > canvas.height){
         ball.dirY *= -1;
-        ball.speed /= ball.gravity
+        ball.velocity *= -0.1 
     }
     else if(ball.y < 0){
         ball.dirY *= -1;
     }
-    ball.y += ball.speed*ball.gravity*ball.dirY;
+    ball.y += up+ball.velocity*ball.dirY;
   }
